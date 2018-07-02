@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import rom.bc.nicu.dto.ClubTeamDto;
 
 @Slf4j
-@ResponseStatus(value= HttpStatus.UNPROCESSABLE_ENTITY, reason="Team already existing")
+@ResponseStatus(value=HttpStatus.UNPROCESSABLE_ENTITY, reason="Team already existing")
 public class TeamAlreadyExistingException extends RuntimeException {
 
     public TeamAlreadyExistingException(ClubTeamDto clubTeamDto) {
