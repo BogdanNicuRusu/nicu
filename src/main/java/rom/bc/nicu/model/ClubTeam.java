@@ -9,8 +9,7 @@ import java.time.LocalDate;
 
 @Getter
 @Setter
-@Document(collection = "clubTeams")
-public class ClubTeam extends Team {
+public class ClubTeam extends rom.bc.nicu.abstraction.Team {
 
     private LocalDate founded;
     private String country;

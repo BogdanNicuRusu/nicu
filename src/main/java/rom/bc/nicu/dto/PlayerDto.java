@@ -23,7 +23,5 @@ public class PlayerDto {
     private String lastName;
     @NotNull
     private String birthDate;
-    @NotNull
-    private PreferredFoot preferredFoot;
 
 }

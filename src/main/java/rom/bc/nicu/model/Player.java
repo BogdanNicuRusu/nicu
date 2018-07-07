@@ -16,10 +16,8 @@ public class Player extends Person {
 
     public Player(String firstName,
                   String lastName,
-                  LocalDate birthDate,
-                  PreferredFoot preferredFoot) {
+                  LocalDate birthDate) {
         super(firstName, lastName, birthDate);
-        this.preferredFoot = preferredFoot;
     }
 
     public enum PreferredFoot {

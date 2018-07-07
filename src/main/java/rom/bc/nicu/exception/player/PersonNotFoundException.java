@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 @ResponseStatus(value= HttpStatus.NOT_FOUND, reason="Person not found")
 public class PersonNotFoundException extends RuntimeException {
 
-    public PersonNotFoundException(String playerId, String entityType) {
-        log.error("{} with id {} not found", entityType, playerId);
+    public PersonNotFoundException(String id, String entityType) {
+        log.error("{} with id {} not found", entityType, id);
     }
 
 }

@@ -12,7 +12,7 @@ import javax.validation.constraints.Size;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class ClubTeamDto {
+public class TeamDto {
 
     @NotNull
     @Size(min = 2, max = 20)

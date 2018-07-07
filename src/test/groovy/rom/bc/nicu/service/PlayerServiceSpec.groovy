@@ -19,7 +19,7 @@ class PlayerServiceSpec extends Specification {
 
     PlayerRepository playerRepository = Mock()
 
-    def playerDto = new PlayerDto("John", "Doe", "2000-01-01", RIGHT)
+    def playerDto = new PlayerDto("John", "Doe", "2000-01-01")
 
     def service = new PlayerService(playerRepository)
 
@@ -57,6 +57,6 @@ class PlayerServiceSpec extends Specification {
     }
 
     private static Player createNewPlayer() {
-        new Player("John", "Doe", LocalDate.of(2000, 10, 10), RIGHT)
+        new Player("John", "Doe", LocalDate.of(2000, 10, 10))
     }
 }

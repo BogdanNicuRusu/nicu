@@ -7,7 +7,7 @@ import rom.bc.nicu.model.ClubTeam;
 import java.util.Optional;
 
 @Repository
-public interface ClubTeamRepository extends MongoRepository<ClubTeam, String> {
+public interface TeamRepository extends MongoRepository<ClubTeam, String> {
 
     Optional<ClubTeam> findByNameAndCountry(String name, String country);
 }

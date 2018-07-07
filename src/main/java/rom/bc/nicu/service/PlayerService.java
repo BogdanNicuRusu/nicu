@@ -34,7 +34,7 @@ public class PlayerService {
 
     private Player convert(PlayerDto playerDto) {
         LocalDate birthDate = parse(playerDto.getBirthDate());
-        return new Player(playerDto.getFirstName(), playerDto.getLastName(), birthDate, playerDto.getPreferredFoot());
+        return new Player(playerDto.getFirstName(), playerDto.getLastName(), birthDate);
     }
 }
 
