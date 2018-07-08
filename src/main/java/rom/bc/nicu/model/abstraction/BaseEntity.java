@@ -1,4 +1,4 @@
-package rom.bc.nicu.abstraction;
+package rom.bc.nicu.model.abstraction;
 
 import lombok.Getter;
 import org.springframework.data.annotation.Id;
@@ -11,7 +11,7 @@ public class BaseEntity {
     @Id
     private String id;
 
-    BaseEntity() {
+    protected BaseEntity() {
         this.id = UUID.randomUUID().toString();
     }
 }

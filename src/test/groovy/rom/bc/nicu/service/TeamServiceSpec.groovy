@@ -1,40 +1,46 @@
 package rom.bc.nicu.service
 
 import rom.bc.nicu.dto.TeamDto
+import rom.bc.nicu.exception.team.PlayerCannotJoinTeamException
 import rom.bc.nicu.exception.team.TeamAlreadyExistingException
 import rom.bc.nicu.exception.team.TeamNotFoundException
-import rom.bc.nicu.model.ClubTeam
+import rom.bc.nicu.model.Player
+import rom.bc.nicu.model.Team
 import rom.bc.nicu.repository.TeamRepository
+import rom.bc.nicu.validators.PlayerCannotjoinTeamValidator
+import rom.bc.nicu.validators.predicates.PlayerCannotJoinTeamPredicate
 import spock.lang.Specification
-
-import java.time.LocalDate
 
 import static java.util.Optional.empty
 import static java.util.Optional.of
 
 class TeamServiceSpec extends Specification{
 
-    TeamRepository clubTeamRepository = Mock()
+    Team team = Mock()
+    Player player = Mock()
+    PlayerCannotjoinTeamValidator validator = Mock()
+    TeamRepository teamRepository = Mock()
+    PlayerService playerService = Mock()
 
-    TeamDto clubTeamDto = new TeamDto("ClubTeam", "2000-10-10", "Romania")
+    TeamDto teamDto = new TeamDto("team", "Romania", false)
 
-    def service = new TeamService(clubTeamRepository)
+    def service = new TeamService(teamRepository, playerService, validator)
 
     def "should create club team if it doesn't exist beforehand"() {
         given:
-            clubTeamRepository.findByNameAndCountry(clubTeamDto.getName(), clubTeamDto.getCountry()) >> empty()
+            teamRepository.findByNameAndCountry(teamDto.getName(), teamDto.getCountry()) >> empty()
         when:
-            service.createClubTeam(clubTeamDto)
+            service.createTeam(teamDto)
         then:
-            1 * clubTeamRepository.save(_ as ClubTeam)
+            1 * teamRepository.save(_ as Team)
             noExceptionThrown()
     }
 
     def "should throw exception if club team can not be created"() {
         given:
-            clubTeamRepository.findByNameAndCountry(clubTeamDto.getName(), clubTeamDto.getCountry()) >> of(createClubTeam())
+            teamRepository.findByNameAndCountry(teamDto.getName(), teamDto.getCountry()) >> of(team)
         when:
-            service.createClubTeam(clubTeamDto)
+            service.createTeam(teamDto)
         then:
             thrown(TeamAlreadyExistingException)
     }
@@ -42,14 +48,11 @@ class TeamServiceSpec extends Specification{
     def "should throw exception if cannot find club team by id"() {
         given:
             def id = "id"
-            clubTeamRepository.findById(id) >> empty()
+            teamRepository.findById(id) >> empty()
         when:
             service.findById(id)
         then:
             thrown(TeamNotFoundException)
     }
 
-    private static ClubTeam createClubTeam() {
-        new ClubTeam("ClubTeam", LocalDate.of(2000, 10, 10), "Romania")
-    }
 }

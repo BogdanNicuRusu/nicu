@@ -1,4 +1,4 @@
-package rom.bc.nicu.abstraction;
+package rom.bc.nicu.model.abstraction;
 
 import lombok.Getter;
 

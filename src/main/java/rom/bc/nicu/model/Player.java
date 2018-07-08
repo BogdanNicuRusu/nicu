@@ -3,7 +3,7 @@ package rom.bc.nicu.model;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.data.mongodb.core.mapping.Document;
-import rom.bc.nicu.abstraction.Person;
+import rom.bc.nicu.model.abstraction.Person;
 
 import java.time.LocalDate;
 

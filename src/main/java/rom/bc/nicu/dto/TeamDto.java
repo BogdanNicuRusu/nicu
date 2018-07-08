@@ -18,7 +18,7 @@ public class TeamDto {
     @Size(min = 2, max = 20)
     private String name;
     @NotNull
-    private String founded;
-    @NotNull
     private String country;
+    @NotNull
+    private boolean isNationalTeam;
 }
